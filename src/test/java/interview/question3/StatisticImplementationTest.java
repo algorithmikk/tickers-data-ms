@@ -1,7 +1,8 @@
 package interview.question3;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
@@ -9,8 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Queue;
 
-import org.junit.Test;
 
+import org.junit.jupiter.api.Test;
 import tickerdata.service.statistic.StatisticImplementation;
 
 public class StatisticImplementationTest {

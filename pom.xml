@@ -3,11 +3,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.tradingscreen</groupId>
-  <artifactId>preinterview</artifactId>
+  <groupId>com.tickerdata</groupId>
+  <artifactId>ticker</artifactId>
   <version>1.0-SNAPSHOT</version>
   <packaging>jar</packaging>
-  <inceptionYear>2006</inceptionYear>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -17,15 +16,25 @@
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.13.1</version>
+      <groupId>org.pitest</groupId>
+      <artifactId>pitest-ant</artifactId>
+      <version>1.7.3</version>
+    </dependency>
+    <dependency>
+      <groupId>org.jacoco</groupId>
+      <artifactId>jacoco-maven-plugin</artifactId>
+      <version>0.8.7</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter-api</artifactId>
+      <version>5.8.2</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.assertj</groupId>
       <artifactId>assertj-core</artifactId>
-      <version>3.11.1</version>
+      <version>3.21.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -113,49 +122,30 @@
           </rules>
         </configuration>
       </plugin>
-
       <plugin>
-        <groupId>com.keyboardsamurais.maven</groupId>
-        <artifactId>maven-timestamp-plugin</artifactId>
-        <version>1.0</version>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>0.8.7</version>
         <executions>
           <execution>
-            <id>year</id>
             <goals>
-              <goal>create</goal>
+              <goal>prepare-agent</goal>
             </goals>
-            <configuration>
-              <propertyName>year</propertyName>
-              <timestampPattern>yyyy</timestampPattern>
-            </configuration>
           </execution>
-        </executions>
-      </plugin>
-      <plugin>
-        <groupId>com.mycila</groupId>
-        <artifactId>license-maven-plugin</artifactId>
-        <version>3.0</version>
-        <configuration>
-          <header>${project.basedir}/header.txt</header>
-          <strictCheck>true</strictCheck>
-          <mapping>
-            <java>SLASHSTAR_STYLE</java>
-          </mapping>
-          <properties>
-            <inceptionYear>${project.inceptionYear}</inceptionYear>
-            <year>${year}</year>
-          </properties>
-        </configuration>
-        <executions>
           <execution>
-            <id>check</id>
+            <id>report</id>
+            <phase>prepare-package</phase>
             <goals>
-              <goal>check</goal>
+              <goal>report</goal>
             </goals>
           </execution>
         </executions>
       </plugin>
-
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>1.7.3</version>
+      </plugin>
     </plugins>
   </build>
 </project>

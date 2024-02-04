@@ -1,11 +1,11 @@
 # tickers data processing
 
-Implement a process to find the most popular ticker (the symbol identifying a stock).
+Implementing a process to find the most popular ticker (the symbol identifying a stock).
 Read the javadoc of TransactionStatistics to understand what we mean by popular.
 Two implementations. One using a single-thread, the other performing the calculation in parallel. 
 If you look at performance, assume a list of 1M entries and 40 different tickers
 
-Implementing the Statistic interface in other to provide an implementation that calculate statistics for an infinite flow of events. You can do many implementations.
+Implementing the Statistic interface in order to provide an implementation that calculate statistics for an infinite flow of events.
 
 The rules:
 
